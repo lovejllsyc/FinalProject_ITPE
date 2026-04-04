@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up / Login - Fastbreak Co.</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+<nav class="puma-navbar">
+  <div class="navbar-container">
+    <a href="index.html" class="navbar-logo">
+<img src="android-chrome-192x192.png" alt="logo" height="40">    </a>
+    
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="category.html" class="nav-link">Categories</a>
+        <div class="dropdown">
+          <a href="shoes.html" class="dropdown-link">Shoes</a>
+          <a href="apparels.html" class="dropdown-link">Clothing</a>
+          <a href="training.html" class="dropdown-link">Athlete Essentials</a>
+          <a href="accesories.html" class="dropdown-link">Accessories</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="reviews.html" class="nav-link">Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html" class="nav-link">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a href="faqs.html" class="nav-link">FAQs</a>
+      </li>
+      <li class="nav-item">
+        <a href="sizeguide.html" class="nav-link">Size Guide</a>
+      </li>
+    </ul>
+    
+    <div class="nav-actions">
+      <span class="icon account-icon" style="font-size: 20px; cursor: pointer; margin-left: 20px;" onclick="window.location.href='sign.html'">👤</span>
+      <div style="position: relative; display: inline-block; margin-left: 20px;">
+        <span class="cart-icon" style="font-size: 20px; cursor: pointer;" onclick="window.location.href='cart.html'">🛒</span>
+      </div>
+    </div>
+    
+    <div class="mobile-menu-btn">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </div>
+</nav>
+
+<div class="auth-container">
+    <h2 id="auth-title">Sign Up</h2>
+    <form class="auth-form" id="auth-form">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit" id="auth-button">Sign Up</button>
+    </form>
+    <p id="toggle-text">Already have an account? <span class="toggle-auth" onclick="toggleAuth()">Login</span></p>
+</div>
+
+<script>
+function toggleAuth() {
+    const title = document.getElementById('auth-title');
+    const button = document.getElementById('auth-button');
+    const username = document.getElementById('username');
+    const toggleText = document.getElementById('toggle-text');
+    
+    if (title.textContent === 'Sign Up') {
+        title.textContent = 'Login';
+        button.textContent = 'Login';
+        username.style.display = 'none';
+        toggleText.innerHTML = 'Don\'t have an account? <span class="toggle-auth" onclick="toggleAuth()">Sign Up</span>';
+    } else {
+        title.textContent = 'Sign Up';
+        button.textContent = 'Sign Up';
+        username.style.display = 'block';
+        toggleText.innerHTML = 'Already have an account? <span class="toggle-auth" onclick="toggleAuth()">Login</span>';
+    }
+}
+
+document.getElementById('auth-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const isLogin = document.getElementById('auth-title').textContent === 'Login';
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('username', document.getElementById('username').value || 'User');
+    alert(isLogin ? 'Logged in successfully!' : 'Account created successfully!');
+    window.location.href = 'account.html';
+});
+</script>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>👟 About HoopsStore</h3>
+      <p>Your #1 destination for basketball gear. Premium shoes, apparel, and athlete essentials for every baller.</p>
+      <p><strong>Est. 2024</strong> | Serving PH nationwide</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>📞 Contact Us</h3>
+      <p><strong>📱 Smart/M Globe:</strong> 0999-123-4567</p>
+      <p><strong>📧 Email:</strong> Fastbreak.co.com</p>
+      <p><strong>📍 Location:</strong> Ill City, Philippines</p>
+      <p><strong>⏰ Hours:</strong> 9AM - 8PM Daily</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>🔗 Quick Links</h3>
+      <p><a href="payment.html">Payment Methods</a></p>
+      <p><a href="returns.html">Return Policy</a></p>
+      <p><a href="shipping.html">Shipping Policy</a></p>
+      <p><a href="new-arrivals.html">New Arrivals</a></p>
+      <div class="social-icons">
+        <a href="#">📘 Facebook</a>
+        <a href="#">📸 Instagram</a>
+        <a href="#">🐦 Twitter</a>
+        <a href="#">🎥 TikTok</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2024 Fastbreak.Co. All rights reserved. | <a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
+

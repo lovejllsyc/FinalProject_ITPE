@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Account - Fastbreak Co.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="puma-navbar">
+  <div class="navbar-container">
+    <a href="index.html" class="navbar-logo">
+      <img src="logo.png" alt="logo" height="40">
+    </a>
+    
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="category.html" class="nav-link">Categories</a>
+        <div class="dropdown">
+          <a href="shoes.html" class="dropdown-link">Shoes</a>
+          <a href="apparels.html" class="dropdown-link">Clothing</a>
+          <a href="training.html" class="dropdown-link">Athlete Essentials</a>
+          <a href="accesories.html" class="dropdown-link">Accessories</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="reviews.html" class="nav-link">Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html" class="nav-link">About</a>
+      </li>
+      <li class="nav-item">
+        <a href="faqs.html" class="nav-link">FAQs</a>
+      </li>
+      <li class="nav-item">
+        <a href="sizeguide.html" class="nav-link">Size Guide</a>
+      </li>
+    </ul>
+    
+    <div class="nav-actions">
+      <span class="account-icon active" style="font-size: 20px; cursor: pointer; margin-left: 20px;" onclick="window.location.href='account.html'">👤</span>
+      <div style="position: relative; display: inline-block; margin-left: 20px;">
+        <span class="cart-icon" style="font-size: 20px; cursor: pointer;" onclick="window.location.href='cart.html'">🛒</span>
+        <span class="cart-count">3</span>
+      </div>
+    </div>
+    
+    <div class="mobile-menu-btn">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+  </div>
+</nav>
+
+<section id="account" style="padding: 120px 40px 80px; max-width: 1200px; margin: 0 auto;">
+  <h1>My Account</h1>
+  
+  <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px;">
+    
+    <div class="dashboard-card" style="background: linear-gradient(145deg, #2a2a2a, #1f1f1f); border-radius: 20px; padding: 30px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <h3 style="color: #ff0000; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">👤 Profile</h3>
+      <p><strong>Username:</strong> <span id="username-display">User</span></p>
+      <p><strong>Email:</strong> user@example.com</p>
+      <button onclick="editProfile()" style="background: #ff0000; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 15px;">Edit Profile</button>
+    </div>
+    
+    <div class="dashboard-card" style="background: linear-gradient(145deg, #2a2a2a, #1f1f1f); border-radius: 20px; padding: 30px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <h3 style="color: #ff0000; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">📦 Orders</h3>
+      <p style="color: #ccc;"><em>No orders yet. <a href="category.html" style="color: #ff0000;">Shop now</a></em></p>
+      <div class="order-list" style="margin-top: 20px;">
+        <!-- Orders will appear here -->
+      </div>
+    </div>
+    
+    <div class="dashboard-card full-width" style="background: linear-gradient(145deg, #2a2a2a, #1f1f1f); border-radius: 20px; padding: 30px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.3); grid-column: 1 / -1;">
+      <h3 style="color: #ff0000; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">📋 Recent Activity</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #444; color: #ccc;">Welcome to your dashboard!</li>
+      </ul>
+    </div>
+    
+  </div>
+  
+  <div style="text-align: center; margin-top: 40px;">
+    <button onclick="logout()" style="background: #666; color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 16px; cursor: pointer;">Logout</button>
+  </div>
+</section>
+
+<script>
+function loadUserData() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const username = localStorage.getItem('username') || 'User';
+    
+    if (!isLoggedIn) {
+        window.location.href = 'sign.html';
+        return;
+    }
+    
+    document.getElementById('username-display').textContent = username;
+}
+
+function editProfile() {
+    alert('Profile editing feature coming soon!');
+}
+
+function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
+    window.location.href = 'index.html';
+}
+
+loadUserData();
+</script>
+
+<style>
+.account-icon.active {
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.dashboard-card {
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    #account {
+        padding: 100px 20px 60px;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>👟 About Fastbreak Co.</h3>
+      <p>Your #1 destination for basketball gear. Premium shoes, apparel, and athlete essentials for every baller.</p>
+      <p><strong>Est. 2024</strong> | Serving PH nationwide</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>📞 Contact Us</h3>
+      <p><strong>📱 Smart/M Globe:</strong> 0999-123-4567</p>
+<p><strong>📧 Email:</strong> Fstbreak.co.com</p>
+      <p><strong>📍 Location:</strong> Manila, Philippines</p>
+      <p><strong>⏰ Hours:</strong> 9AM - 8PM Daily</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>🔗 Quick Links</h3>
+      <p><a href="payment.html">Payment Methods</a></p>
+      <p><a href="returns.html">Return Policy</a></p>
+      <p><a href="shipping.html">Shipping Policy</a></p>
+      <p><a href="new-arrivals.html">New Arrivals</a></p>
+      <div class="social-icons">
+        <a href="#">📘 Facebook</a>
+        <a href="#">📸 Instagram</a>
+        <a href="#">🐦 Twitter</a>
+        <a href="#">🎥 TikTok</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2024 Fastbreak Co. All rights reserved. | <a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
+
