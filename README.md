@@ -16,7 +16,7 @@ This system is focused on enhancing the customer experience by providing a smoot
 
 ---
 
-## 🧑‍💻 Group Members (Alphabetical by Last Name)
+## 🧑‍💻 Group Members
 - Joeniel Bindol  
 - Kc Cawade  
 - John Zedrick Hernia  
