@@ -131,7 +131,7 @@ function trackOrder() {
     return;
   }
   
-  // Simulate tracking data
+  
   const trackingData = {
     '1001': { status: 'Delivered', date: 'Dec 18, 2024' },
     '1002': { status: 'Out for Delivery', date: 'Dec 20, 2024 (ETA)' },
@@ -144,7 +144,6 @@ function trackOrder() {
   document.getElementById('orderNumber').textContent = `Order ${orderId}`;
   document.getElementById('deliveryDate').textContent = `Expected ${result.date}`;
   
-  // Update timeline
   document.querySelectorAll('.status-item').forEach(item => item.classList.remove('active'));
   if (result.status === 'Delivered') {
     document.querySelectorAll('.status-item')[2].classList.add('active');
